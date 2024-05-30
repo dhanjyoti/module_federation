@@ -1,4 +1,4 @@
-Github source code - https://github.com/dhanjyoti/module_federation
+Github source code - https://github.com/dhanjyoti/module_federation/tree/master
 
 # 24/5/2024 - Module Federation in Nextjs version - 14
 
