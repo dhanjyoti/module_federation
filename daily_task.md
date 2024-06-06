@@ -407,18 +407,113 @@ Install `npm i -D babel-loader @babel/core @babel/preset-env` for more browser c
 Install `npm i -D webpack-bundle-analyzer` to show what the application is build from, what takes up more space etc. It gives a visual representation of our application.
 
  
+# 27/5/2024 Module Federation in regular react without SSR
 
 
+# 28/5/2024 Module Federation in next.js version - 12
 
 
+# 29/5/2024 Module Fedeation in next.js-vs.13
+
+# 30/5/2024 Module Federation in nextjs with SSR
+
+Step 1:
+npx create-next-app@latest
+    To create Nextjs app
+
+Selected 
+* App name
+* Page router
+
+Step 2:
+Installed Webpack
+- npm i webpack
+
+Step 3: 
+Installed Module Federation
+- npm i @module-federation/nextjs-mf
+- npm i @module-federation/enhanced
+
+Did the same for remote apps
+
+```jsx
+        import NextFederationPlugin  from '@module-federation/nextjs-mf';
+        // this enables you to use import() and the webpack parser
+        // loading remotes on demand, not ideal for SSR
+        const remotes = isServer => {
+        const location = isServer ? 'ssr' : 'chunks';
+        return {
+            client1: `client1@http://localhost:3001/_next/static/${location}/remoteEntry.js`,
+            client2: `client2@http://localhost:3002/_next/static/${location}/remoteEntry.js`,
+        };
+        };
+        const nextConfig = {
+        webpack(config, options) {
+            config.plugins.push(
+            new NextFederationPlugin({
+                name: 'host',
+                filename: 'static/chunks/remoteEntry.js',
+                dts:false,
+                remotes: remotes(options.isServer),
+
+            }),
+            );
+
+            return config;
+        },
+        };
+
+        export default nextConfig;
+```
+* `import NextFederationPlugin  from '@module-federation/nextjs-mf'` - This plugin is likely used to enable Module Federation in a Next.js application.
+
+* `const remotes = isServer => {}` - This line declares a function named remotes that takes a boolean parameter isServer. This function is later used to define remote modules that will be loaded dynamically.
+
+* `const location = isServer ? 'ssr' : 'chunks'` - This line declares a variable location which is set to 'ssr' if isServer is true, otherwise it is set to 'chunks'. This determines whether the location for loading remote modules will be for server-side rendering (ssr) or for chunks.
+
+* `return {client2: `client2@http://localhost:3002/_next/static/${location}/remoteEntry.js`}` - This block returns an object with key client2, each pointing to the remote entry files of different clients (client2). The URLs are constructed based on the location variable and are pointing to the respective remote entry files.
 
 
+```js
+config.plugins.push(
+    new NextFederationPlugin({
+        name: 'host',
+        filename: 'static/chunks/remoteEntry.js',
+        dts:false,
+        remotes: remotes(options.isServer),
+    }),
+);
+``` 
+* This block pushes a new instance of NextFederationPlugin into the plugins array of the webpack configuration. It configures the plugin with options including the name of the host (likely the current application), the filename for the remote entry file, whether to generate TypeScript declaration files (dts), and the remotes to load dynamically, which are determined by calling the remotes function with the isServer option.
 
-# 27/5/2024
+```jsx
+import NextFederationPlugin from "@module-federation/nextjs-mf";
 
-# 28/5/2024
+const nextConfig = {
+  webpack(config, options) {
+    config.plugins.push(
+      new NextFederationPlugin({
+        name: 'client2',
+        filename: 'static/chunks/remoteEntry.js',
+        dts:false,
+        exposes: {
+          './home': './src/pages/index.js',
+        },
+        shared: {},
+        extraOptions:{
+          exposePages: true
+        }
+      }),
+    );
 
-
-# 29/5/2024
-
-**created module fedeation in next.js-vs.13**
+    return config;
+  },
+};
+export default nextConfig;
+```
+* `name`: The name of the remote module being exposed.
+* `filename`: The filename for the remote entry file.
+* `dts`: A boolean indicating whether to generate TypeScript declaration files.
+* `exposes`: An object that maps exposed module paths to their corresponding source files. In this case, it exposes the ./src/pages/index.js file as ./home.
+* `shared`: An object defining shared modules. It's currently empty, indicating no shared modules.
+* `extraOptions`: Additional options for the plugin. In this case, it specifies exposePages as true, which likely means that Next.js pages are exposed as modules.

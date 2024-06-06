@@ -1,0 +1,90 @@
+{
+  "id": "app2",
+  "name": "app2",
+  "metaData": {
+    "name": "app2",
+    "type": "app",
+    "buildInfo": {
+      "buildVersion": "0.1.0",
+      "buildName": "client"
+    },
+    "remoteEntry": {
+      "name": "remoteEntry.js",
+      "path": "",
+      "type": "global"
+    },
+    "types": {
+      "path": "",
+      "name": "",
+      "zip": "",
+      "api": ""
+    },
+    "globalName": "app2",
+    "pluginVersion": "0.1.18",
+    "publicPath": "http://localhost:3001/static/"
+  },
+  "shared": [
+    {
+      "id": "app2:react-dom",
+      "name": "react-dom",
+      "version": "18.3.1",
+      "singleton": true,
+      "requiredVersion": "^18.3.1",
+      "assets": {
+        "js": {
+          "async": [
+            "758.js"
+          ],
+          "sync": [
+            "143.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      }
+    },
+    {
+      "id": "app2:react",
+      "name": "react",
+      "version": "18.3.1",
+      "singleton": true,
+      "requiredVersion": "^18.3.1",
+      "assets": {
+        "js": {
+          "async": [],
+          "sync": [
+            "758.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      }
+    }
+  ],
+  "remotes": [],
+  "exposes": [
+    {
+      "id": "app2:Content",
+      "name": "Content",
+      "assets": {
+        "js": {
+          "sync": [
+            "__federation_expose_Content.js"
+          ],
+          "async": [
+            "758.js"
+          ]
+        },
+        "css": {
+          "sync": [],
+          "async": []
+        }
+      },
+      "path": "./Content"
+    }
+  ]
+}

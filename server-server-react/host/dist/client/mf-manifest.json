@@ -1,0 +1,79 @@
+{
+  "id": "app1",
+  "name": "app1",
+  "metaData": {
+    "name": "app1",
+    "type": "app",
+    "buildInfo": {
+      "buildVersion": "0.1.0",
+      "buildName": "host"
+    },
+    "remoteEntry": {
+      "name": "",
+      "path": "",
+      "type": "global"
+    },
+    "types": {
+      "path": "",
+      "name": "",
+      "zip": "",
+      "api": ""
+    },
+    "globalName": "app1",
+    "pluginVersion": "0.1.18",
+    "publicPath": "http://localhost:3000/static/"
+  },
+  "shared": [
+    {
+      "id": "app1:react-dom",
+      "name": "react-dom",
+      "version": "18.3.1",
+      "singleton": true,
+      "requiredVersion": "^18.3.1",
+      "assets": {
+        "js": {
+          "async": [
+            "471.js"
+          ],
+          "sync": [
+            "main.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      }
+    },
+    {
+      "id": "app1:react",
+      "name": "react",
+      "version": "18.3.1",
+      "singleton": true,
+      "requiredVersion": "^18.3.1",
+      "assets": {
+        "js": {
+          "async": [
+            "471.js"
+          ],
+          "sync": [
+            "main.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      }
+    }
+  ],
+  "remotes": [
+    {
+      "federationContainerName": "app2",
+      "moduleName": "Content",
+      "alias": "app2",
+      "entry": "http://localhost:3001/static/remoteEntry.js"
+    }
+  ],
+  "exposes": []
+}

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkclient=self.webpackChunkclient||[]).push([[855],{9282:(e,t,n)=>{n.r(t),n.d(t,{default:()=>a});var l=n(636),r=n.n(l);const a=e=>r().createElement("div",{style:{padding:"1rem",borderRadius:"0.25rem",border:"4px dashed #228b22"},"data-e2e":"APP_2_CONTENT_BLOCK"},r().createElement("h2",null,"App 2: Content"),r().createElement("p",null,"This is the content from app2."),r().createElement("p",null,"Custom text: ",r().createElement("strong",null,e.content)))}}]);
+//# sourceMappingURL=__federation_expose_Content.js.map

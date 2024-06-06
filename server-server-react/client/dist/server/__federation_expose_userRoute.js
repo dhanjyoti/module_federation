@@ -1,0 +1,1 @@
+"use strict";exports.id=432,exports.ids=[432],exports.modules={166:function(n,e,o){async function t(n,e){e.json({id:1337,name:"John Doe",company:"Acme Inc."})}o.r(e),o.d(e,{userRoute:function(){return t}}),e.default=t}};
