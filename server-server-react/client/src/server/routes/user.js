@@ -1,4 +1,3 @@
-
 export async function userRoute(req, res) {
   const response = {
     id: 1337,

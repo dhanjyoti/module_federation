@@ -517,3 +517,17 @@ export default nextConfig;
 * `exposes`: An object that maps exposed module paths to their corresponding source files. In this case, it exposes the ./src/pages/index.js file as ./home.
 * `shared`: An object defining shared modules. It's currently empty, indicating no shared modules.
 * `extraOptions`: Additional options for the plugin. In this case, it specifies exposePages as true, which likely means that Next.js pages are exposed as modules.
+
+# next js server to server
+
+1. pnpx create-next-app host 
+2. pnpm mf nextjs
+3. pnpm i webpack
+4. change script dev in package.json
+5. change the congif.next.js from the github
+6. create components folder inside src
+7. create content.js file inside components
+8. write something inside main.js
+9. pnpm dev start in both the host and remote app
+10. change inside index.js the host
+11. 
