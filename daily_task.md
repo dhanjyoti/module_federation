@@ -1157,4 +1157,3 @@ Now we can start our reactr project by the command `npm start`, and ones we are 
 8. write something inside main.js
 9. pnpm dev start in both the host and remote app
 10. change inside index.js the host
-11. 
